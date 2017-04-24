@@ -134,7 +134,7 @@
         <p>Control Panel</p>
         <p>
             <a href="/api">API Friends list</a> |
-            <a href="#">GitHub Repo</a></p>
+            <a href="https://github.com/hberry79/friend-finder">GitHub Repo</a></p>
     </div>
     <!-- Modal -->
     <div id="resultsModal" class="modal fade" role="dialog">
@@ -173,19 +173,23 @@
         }
         console.log(person);
         postData();
+        showMatch();
     }); //end of submit on click
 
-    function postData(){
-    $.post(currentURL + "/newUser", person).done(function(data) {
-        console.log(data);
-        showMatch();
-        //clear values
-    })
-  }
+    function postData() {
+        $.post(currentURL + '/newUser', person).done(function(data) {
+            console.log(data);
+
+            //clear values
+        })
+    }
 
     function showMatch() {
         //.get
         alert("here is your match");
+        $("#name").val(" ")
+        $("#photo").val(" ")
+        $(".chosen-select").val(" ")
     }
     </script>
 </body>
