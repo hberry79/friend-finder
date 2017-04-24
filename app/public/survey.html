@@ -158,27 +158,31 @@
     <script type="text/javascript">
     //.post
     var userScore = [];
+    var currentURL = window.location.origin;
 
 
-    $("#submit").on("click", function(){
-       for (var i = 1; i <= 10; i++) {
-        userScore.push($("#q" + i).val().trim());
-      }   
-    });
+    $("#submit").on("click", function() {
+        for (var i = 1; i <= 10; i++) {
+            userScore.push($("#q" + i).val().trim());
+        }
 
-    var person = {
-      name: $("#name").val().trim(),
-      image: $("#photo").val().trim(),
-      answers: userScore
-    }
+        var person = {
+            name: $("#name").val().trim(),
+            image: $("#photo").val().trim(),
+            answers: userScore
+        }
+        console.log(person);
+    }); //end of submit on click
 
-    $.post("/newUser", person).done(function(data){
-      console.log(data);
-      //showMatch();
+    $.post(currentURL + "/newUser", person).done(function(data) {
+        console.log(data);
+        showMatch();
+        //clear values
     })
 
-    function showMatch(){
-      //.get
+    function showMatch() {
+        //.get
+        alert("here is your match");
     }
     </script>
 </body>

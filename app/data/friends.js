@@ -1,4 +1,8 @@
-var incomingPerson = require('../server.js');
+var incomingPerson = [{
+	answers : [],
+	image : "",
+	name: ""
+}];
 
 
 module.exports = incomingPerson;
