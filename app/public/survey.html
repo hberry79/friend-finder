@@ -158,6 +158,7 @@
     <script type="text/javascript">
     //.post
     var userScore = [];
+    var person = {};
     var currentURL = window.location.origin;
 
 
@@ -165,20 +166,22 @@
         for (var i = 1; i <= 10; i++) {
             userScore.push($("#q" + i).val().trim());
         }
-
-        var person = {
+        person = {
             name: $("#name").val().trim(),
             image: $("#photo").val().trim(),
             answers: userScore
         }
         console.log(person);
+        postData();
     }); //end of submit on click
 
+    function postData(){
     $.post(currentURL + "/newUser", person).done(function(data) {
         console.log(data);
         showMatch();
         //clear values
     })
+  }
 
     function showMatch() {
         //.get
