@@ -16,17 +16,14 @@ module.exports = function(app) {
     });
 };
 
-
+//setting a constructor to act as the current best match
+var bestMatch = {
+    name: "name",
+    photo: "photo",
+    compatibility: 1000
+};
 
 function getMatch(userData) {
-
-    //setting a constructor to act as the current best match
-    var bestMatch = {
-        name: "name",
-        photo: "photo",
-        compatibility: 1000
-    };
-
     //variables for incoming data from ajax post for parsing
     var userScores = userData.answers;
 
@@ -45,11 +42,11 @@ function getMatch(userData) {
             totalDifference += Math.abs(parseInt(userScores[j]) - parseInt(friendData[i].answers[j]));
 
             //doing the comparison to see if it is the best match
-            if (totalDifference <= bestMatch.friendDifference) {
+            if (totalDifference <= bestMatch.compatibility) {
                 //setting the best match info 
                 bestMatch.name = friendData[i].name;
                 bestMatch.photo = friendData[i].image;
-                bestMatch.compatibility = totalDiffrence;
+                bestMatch.compatibility = totalDifference;
             }
         }
     }
