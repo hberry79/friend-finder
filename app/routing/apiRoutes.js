@@ -11,10 +11,13 @@ module.exports = function(app) {
         getMatch(newUser);
         friendData.push(newUser);
         //display this in the modal
-        //console.log(bestMatch);
-        //res.json(bestMatch);
+        res.json(bestMatch);
     });
 };
+
+//=================
+	//getMatch function defined
+//=================
 
 //setting a constructor to act as the current best match
 var bestMatch = {
@@ -24,7 +27,6 @@ var bestMatch = {
 };
 
 function getMatch(userData) {
-	console.log(userData);
     //variables for incoming data from ajax post for parsing
     var userScores = userData['answers[]'];
 
@@ -33,7 +35,6 @@ function getMatch(userData) {
 
     //iteraing thorugh database to compare possibilites 
     for (var i = 0; i < friendData.length; i++) {
-        console.log(friendData[i].name);
         totalDifference = 0;
 
 
@@ -51,5 +52,4 @@ function getMatch(userData) {
             }
         }
     }
-    console.log("your best match is " +bestMatch.name)
 } //end of getMatch
