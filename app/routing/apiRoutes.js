@@ -24,8 +24,9 @@ var bestMatch = {
 };
 
 function getMatch(userData) {
+	console.log(userData);
     //variables for incoming data from ajax post for parsing
-    var userScores = userData.answers;
+    var userScores = userData['answers[]'];
 
     //global var to calc difference between user points and each user in DB
     var totalDifference = 0;
@@ -50,4 +51,5 @@ function getMatch(userData) {
             }
         }
     }
+    console.log("your best match is " +bestMatch.name)
 } //end of getMatch
